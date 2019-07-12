@@ -128,7 +128,7 @@ services:
           # Allow Docker In Docker
         privileged: true
         volumes:
-          - ./jenkins_home:/var/jenkins_home
+          - ./jenkins/jenkins_home:/var/jenkins_home
           # Allow Docker In Docker to use parent docker container
           - /var/run/docker.sock:/var/run/docker.sock
 
