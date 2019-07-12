@@ -80,55 +80,55 @@ services:
 
     ### ElasticSearch ########################################
   elasticsearch:
-      build: ./elasticsearch
-      volumes:
-        - ../data/elasticsearch:/usr/share/elasticsearch/data
-      environment:
-        - cluster.name=twitf-cluster
-        - bootstrap.memory_lock=true
-        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      ulimits:
-        memlock:
-          soft: -1
-          hard: -1
-      ports:
-        - "9200:9200"
-        - "9300:9300"
-      depends_on:
-        - php-fpm
-      networks:
-        - frontend
-        - backend
-      container_name: elasticSearch
+    build: ./elasticsearch
+    volumes:
+      - ../data/elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - cluster.name=twitf-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    depends_on:
+      - php-fpm
+    networks:
+      - frontend
+      - backend
+    container_name: elasticSearch
 
     ### RabbitMQ ########################################
   rabbitmq:
-      build: ./rabbitmq
-      ports:
-        - "5672:5672"
-        - "15672:15672"
-        - "15671:15671"
-      privileged: true
-      environment:
-        - RABBITMQ_DEFAULT_USER=root
-        - RABBITMQ_DEFAULT_PASS=root
-      depends_on:
-        - php-fpm
-      networks:
-        - backend
-      container_name: rabbitmq
+    build: ./rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15671:15671"
+    privileged: true
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+    depends_on:
+      - php-fpm
+    networks:
+      - backend
+    container_name: rabbitmq
   jenkins:
-      build: ./jenkins
-      environment:
-        JAVA_OPTS: "-Djava.awt.headless=true"
-      ports:
-        - "50000:50000"
-          # Expose Jenkins to parent on port 8090
-        - "8090:8080"
-          # Allow Docker In Docker
-      privileged: true
-      volumes:
-        - ./jenkins/jenkins_home:/var/jenkins_home
-          # Allow Docker In Docker to use parent docker container
-        - /var/run/docker.sock:/var/run/docker.sock
+    build: ./jenkins
+    environment:
+      JAVA_OPTS: "-Djava.awt.headless=true"
+    ports:
+      - "50000:50000"
+      # Expose Jenkins to parent on port 8090
+      - "8090:8080"
+      # Allow Docker In Docker
+    privileged: true
+    volumes:
+      - ./jenkins/jenkins_home:/var/jenkins_home
+      # Allow Docker In Docker to use parent docker container
+      - /var/run/docker.sock:/var/run/docker.sock
 
