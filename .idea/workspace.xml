@@ -69,8 +69,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< Updated upstream
     <option name="x" value="671" />
     <option name="y" value="106" />
+=======
+    <option name="x" value="282" />
+    <option name="y" value="73" />
+>>>>>>> Stashed changes
     <option name="width" value="1561" />
     <option name="height" value="1040" />
   </component>
