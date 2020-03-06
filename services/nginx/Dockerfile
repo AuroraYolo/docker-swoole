@@ -1,4 +1,4 @@
-FROM nginx:1.15.11
+FROM nginx:1.17.9
 
 # set timezome
 ENV TZ=Asia/Shanghai
