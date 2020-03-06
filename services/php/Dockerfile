@@ -32,6 +32,7 @@ RUN docker-php-ext-configure gd  --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install \
     iconv \
     gd \
+    openssl \
     pdo_mysql \
     bcmath \
     mysqli \
