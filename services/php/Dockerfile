@@ -4,7 +4,6 @@ MAINTAINER goozp "gzp@goozp.com"
 # 设置时区
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apk/repositories
 # 更新安装依赖包和PHP核心拓展
 RUN apt-get update && apt-get install -y \
         procps \
