@@ -17,7 +17,7 @@ RUN set -ex \
         && apk update \
         # libs for swoole extension. libaio linux-headers
         && apk add --no-cache libstdc++ openssl \
-        && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libaio-dev openssl-dev rabbitmq-c rabbitmq-c-dev
+        && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libaio-dev libressl-dev openssl-dev rabbitmq-c rabbitmq-c-dev
 # 安装 PECL 拓展，这里我们安装的是Redis
 RUN pecl install redis && echo "extension=redis.so" > /etc/php7/conf.d/redis.ini
 RUN pecl install amqp && echo "extension=amqp.so" > /etc/php7/conf.d/amqp.ini
