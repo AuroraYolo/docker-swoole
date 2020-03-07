@@ -17,17 +17,14 @@ RUN set -ex \
         && apk update \
         # libs for swoole extension. libaio linux-headers
         && apk add --no-cache libstdc++ openssl \
-        && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libaio-dev openssl-dev
+        && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libaio-dev openssl-dev rabbitmq-c rabbitmq-c-dev
 # 安装 PECL 拓展，这里我们安装的是Redis
 RUN pecl install redis && echo "extension=redis.so" > /etc/php7/conf.d/redis.ini
-RUN pecl install grpc && echo "extension=grpc.so" > /etc/php7/conf.d/grpc.ini
 RUN pecl install amqp && echo "extension=amqp.so" > /etc/php7/conf.d/amqp.ini
 #RUN pecl install imagick && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
 RUN pecl install inotify && echo "extension=inotify.so" > /etc/php7/conf.d/inotify.ini
 RUN pecl install msgpack && echo "extension=msgpack.so" > /etc/php7/conf.d/msgpack.ini
-RUN pecl install zookeeper && echo "extension=zookeeper.so" > /etc/php7/conf.d/zookeeper.ini
 RUN pecl install yar && echo "extension=yar.so" > /etc/php7/conf.d/yar.ini
-RUN pecl install grpc && echo "extension=grpc.so" > /etc/php7/conf.d/grpc.ini
 # 安装 Swoole
 RUN cd /home \
     && git clone https://gitee.com/swoole/swoole.git \
