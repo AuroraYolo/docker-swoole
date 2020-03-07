@@ -8,7 +8,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y \
         procps \
         libfreetype6-dev \
-        libjpeg62-turbo-dev \
         libpng-dev \
         openssl \
         libssh-dev \
@@ -22,13 +21,20 @@ RUN apt-get update && apt-get install -y \
         zip \
         zlibc \
         unzip \
-        git && \
+        git \
+        libicu-dev \
+        libmpdec-dev \
+        libpq-dev \
+        libjpeg-dev \
+        libzip-dev \
+        supervisor \
+        unzip \
+        vim \
         apt autoremove && apt clean
 
 # install php pdo_mysql opcache
 # WARNING: Disable opcache-cli if you run you php
-RUN docker-php-ext-configure && \
-    docker-php-ext-install \
+RUN docker-php-ext-install \
     iconv \
     gd \
     openssl \
@@ -40,7 +46,8 @@ RUN docker-php-ext-configure && \
     json \
     opcache \
     sockets \
-    pcntl && \
+    pcntl \
+    zip \
     echo "opcache.enable_cli=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 # 安装 PECL 拓展，这里我们安装的是Redis
