@@ -1,5 +1,5 @@
-ARG ALPINE_VERSION=3.9
-FROM hyperf/hyperf:7.4-alpine-v${ALPINE_VERSION}-base
+FROM hyperf/hyperf:7.3-alpine-v3.9-base
+
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apk/repositories
