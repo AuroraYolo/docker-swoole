@@ -1,4 +1,5 @@
-FROM swoft/alphp:base
+ARG ALPINE_VERSION=3.10
+FROM hyperf/hyperf:7.4-alpine-v${ALPINE_VERSION}-base
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apk/repositories
@@ -24,7 +25,6 @@ RUN pecl install amqp && echo "extension=amqp.so" > /etc/php7/conf.d/amqp.ini
 #RUN pecl install imagick && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
 RUN pecl install inotify && echo "extension=inotify.so" > /etc/php7/conf.d/inotify.ini
 RUN pecl install msgpack && echo "extension=msgpack.so" > /etc/php7/conf.d/msgpack.ini
-RUN pecl install yar && echo "extension=yar.so" > /etc/php7/conf.d/yar.ini
 # 安装 Swoole
 RUN cd /home \
     && git clone https://gitee.com/swoole/swoole.git \
