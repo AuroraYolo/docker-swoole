@@ -1,4 +1,4 @@
-FROM swoft/alphp:base
+FROM hyperf/hyperf:7.4-alpine-v3.9-base
 
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
 
