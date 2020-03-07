@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
 
 # install php pdo_mysql opcache
 # WARNING: Disable opcache-cli if you run you php
-RUN docker-php-ext-configure gd  --with-jpeg-dir=/usr/include/ && \
+RUN docker-php-ext-configure gd && \
     docker-php-ext-install \
     iconv \
     gd \
@@ -69,8 +69,6 @@ RUN cd /home \
     && php -m \
     && php --ri swoole \
     # ---------- clear works ----------
-    && apk del .build-deps \
-    && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /usr/local/bin/php* \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
 # Composer
