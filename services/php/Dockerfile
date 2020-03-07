@@ -1,4 +1,4 @@
-ARG ALPINE_VERSION=3.10
+ARG ALPINE_VERSION=3.9
 FROM hyperf/hyperf:7.4-alpine-v${ALPINE_VERSION}-base
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
 
